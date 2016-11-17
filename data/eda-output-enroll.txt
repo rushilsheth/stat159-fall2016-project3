@@ -1,0 +1,46 @@
+[1] "Summary Statistics of Enrollment-related Variables"
+  Enroll_Black      Enroll_Hisp      Enroll_Asian     Enroll_Other   
+ Min.   :0.00370   Min.   :0.0333   Min.   :0.0000   Min.   :0.0455  
+ 1st Qu.:0.02375   1st Qu.:0.1032   1st Qu.:0.0363   1st Qu.:0.2002  
+ Median :0.04760   Median :0.1527   Median :0.0833   Median :0.3333  
+ Mean   :0.07292   Mean   :0.2011   Mean   :0.1001   Mean   :0.3342  
+ 3rd Qu.:0.07560   3rd Qu.:0.2772   3rd Qu.:0.1419   3rd Qu.:0.4710  
+ Max.   :0.54550   Max.   :0.5167   Max.   :0.3484   Max.   :0.6358  
+   Enroll_Men      Enroll_Women       Avg_Age       Avg_Fam_Inc   
+ Min.   :0.0690   Min.   :0.2038   Min.   :20.39   Min.   :24188  
+ 1st Qu.:0.4124   1st Qu.:0.4208   1st Qu.:22.77   1st Qu.:24240  
+ Median :0.5344   Median :0.4656   Median :24.92   Median :45101  
+ Mean   :0.4936   Mean   :0.5064   Mean   :25.56   Mean   :44917  
+ 3rd Qu.:0.5793   3rd Qu.:0.5876   3rd Qu.:29.89   3rd Qu.:59023  
+ Max.   :0.7962   Max.   :0.9310   Max.   :30.15   Max.   :69924  
+  Med_Fam_Inc   
+ Min.   :15150  
+ 1st Qu.:15274  
+ Median :24518  
+ Mean   :26276  
+ 3rd Qu.:34677  
+ Max.   :49727  
+
+
+[1] "Correlation Matrix"
+
+             Enroll_Black Enroll_Hisp Enroll_Asian Enroll_Other  Enroll_Men
+Enroll_Black   1.00000000 -0.06061116   0.03946962 -0.421338346 -0.12755209
+Enroll_Hisp   -0.06061116  1.00000000  -0.28056622 -0.283432517  0.16571117
+Enroll_Asian   0.03946962 -0.28056622   1.00000000 -0.229877495 -0.25911990
+Enroll_Other  -0.42133835 -0.28343252  -0.22987749  1.000000000  0.42090067
+Enroll_Men    -0.12755209  0.16571117  -0.25911990  0.420900671  1.00000000
+Enroll_Women   0.12755209 -0.16571117   0.25911990 -0.420900671 -1.00000000
+Avg_Age       -0.06664323  0.63201041  -0.43543280  0.001964203  0.08116429
+Avg_Fam_Inc   -0.12647549 -0.63318603   0.34070705 -0.064057038 -0.25706951
+Med_Fam_Inc   -0.22655775 -0.50426961   0.27968326 -0.087399978 -0.31139165
+             Enroll_Women      Avg_Age Avg_Fam_Inc Med_Fam_Inc
+Enroll_Black   0.12755209 -0.066643230 -0.12647549 -0.22655775
+Enroll_Hisp   -0.16571117  0.632010407 -0.63318603 -0.50426961
+Enroll_Asian   0.25911990 -0.435432800  0.34070705  0.27968326
+Enroll_Other  -0.42090067  0.001964203 -0.06405704 -0.08739998
+Enroll_Men    -1.00000000  0.081164294 -0.25706951 -0.31139165
+Enroll_Women   1.00000000 -0.081164294  0.25706951  0.31139165
+Avg_Age       -0.08116429  1.000000000 -0.78114497 -0.75847637
+Avg_Fam_Inc    0.25706951 -0.781144968  1.00000000  0.92912431
+Med_Fam_Inc    0.31139165 -0.758476368  0.92912431  1.00000000

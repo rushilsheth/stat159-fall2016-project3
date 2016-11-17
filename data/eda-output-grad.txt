@@ -1,0 +1,17 @@
+[1] "Summary Statistics of Grad-related Variables"
+
+
+   Grad_Rate      Grad_Rate_White  Grad_Rate_Black  Grad_Rate_Hisp  
+ Min.   :0.3016   Min.   :0.1818   Min.   :0.0000   Min.   :0.1875  
+ 1st Qu.:0.3424   1st Qu.:0.3134   1st Qu.:0.0000   1st Qu.:0.4454  
+ Median :0.4889   Median :0.4500   Median :0.2632   Median :0.5114  
+ Mean   :0.4860   Mean   :0.4532   Mean   :0.2637   Mean   :0.5650  
+ 3rd Qu.:0.6259   3rd Qu.:0.5716   3rd Qu.:0.3818   3rd Qu.:0.6734  
+ Max.   :0.7241   Max.   :0.7000   Max.   :1.0000   Max.   :1.0000  
+ Grad_Rate_Asian  Grad_Rate_Other 
+ Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.3978   1st Qu.:0.1466  
+ Median :0.6000   Median :0.3333  
+ Mean   :0.5530   Mean   :0.3762  
+ 3rd Qu.:0.6834   3rd Qu.:0.5454  
+ Max.   :1.0000   Max.   :0.9242  
