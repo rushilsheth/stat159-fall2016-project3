@@ -1,4 +1,4 @@
-orig_data <- read.csv("data/orig_data.csv")
+orig_data <- read.csv("../../data/orig_data.csv")
 
 cali_data <- orig_data[orig_data$STABBR == 'CA',]
 
@@ -31,5 +31,8 @@ header <- c("UNIT_ID", "OPE_ID", "OPE_ID6", "INST", "City", "State", "Zip_Code",
 
 colnames(client_data) <- header
 
-write.csv(client_data, file = "data/client_data.csv")
+#remove schools that don't have any data
+client_data<-client_data[-c(2,3),]
+
+write.csv(client_data, file = "../../data/client_data.csv")
 
