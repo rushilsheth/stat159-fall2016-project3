@@ -1,4 +1,4 @@
-orig_data <- read.csv("~/stat159-fall2016-project3/data/orig_data")
+orig_data <- read.csv("data/orig_data.csv")
 
 cali_data <- orig_data[orig_data$STABBR == 'CA',]
 
@@ -31,5 +31,5 @@ header <- c("UNIT_ID", "OPE_ID", "OPE_ID6", "INST", "City", "State", "Zip_Code",
 
 colnames(client_data) <- header
 
-write.csv(client_data, file = "~/stat159-fall2016-project3/data/client_data.csv")
+write.csv(client_data, file = "data/client_data.csv")
 
