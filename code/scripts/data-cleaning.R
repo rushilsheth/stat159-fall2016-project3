@@ -1,9 +1,13 @@
+# Read original data in
 orig_data <- read.csv("data/orig_data.csv")
 
+# Filter for only CA colleges
 cali_data <- orig_data[orig_data$STABBR == 'CA',]
 
+# Filter for Special Focus Four-Year: Arts, Music & Design Schools
 cali_art_data <- cali_data[cali_data$CCBASIC == 30,]
 
+#only include certain columns for race, gender, age, income, grad rate for race, gender and age
 clean_data <- as.matrix(cali_art_data[c(1:10,293:304,1740:1741,1607,1615:1616,826:827,839:840, 853:854,387,397:408, 291)])
 
 #remove cols: UGDS_WHITENH, UGDS_BLACKNH, UGDS_API, All of the Lo_INC_ENRL_2……, C150_4_UNKN, C150_4_BLACKNH, C150_4_API
