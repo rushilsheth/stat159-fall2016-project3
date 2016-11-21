@@ -39,5 +39,5 @@ colnames(client_data) <- header
 #remove schools that don't have any data
 client_data<-client_data[-c(2,3),]
 
-write.csv(client_data, file = "../../data/client_data.csv")
+write.csv(client_data, file = "data/client_data.csv")
 
