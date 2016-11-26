@@ -1,0 +1,13 @@
+#add more libraries
+sink('session-info.txt', append = TRUE)
+library(xtable)
+library(rmarkdown)
+library(knitr)
+library(glmnet)
+library(pander)
+library(pls)
+library(plyr)
+library(reshape2)
+library(ggplot2)
+sessionInfo()
+sink()
