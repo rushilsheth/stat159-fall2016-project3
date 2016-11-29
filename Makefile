@@ -1,9 +1,12 @@
+# variable for url
+url = https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv
+
 .PHONY: data eda report shiny clean all 
 
 all: eda data report slides session-info 
 
 data:
-	curl -o data/orig-data.csv https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv
+	curl -o data/orig-data.csv $(url)
 
 eda:
 	Rscript code/scripts/eda-script-enroll.R
@@ -14,7 +17,7 @@ session-info:
 	Rscript code/scripts/session.info.R
 
 report: report/sections/*.Rmd
-	cat report/sections/*.Rmd > report/report.Rmd
+	cat $(<) > report/report.Rmd # automatic variable
 	Rscript -e 'library(rmarkdown); render("report/report.Rmd")'
 
 slides:
@@ -25,3 +28,5 @@ shiny:
 
 clean: 
 	rm -f report/report.pdf
+
+
