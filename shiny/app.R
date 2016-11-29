@@ -7,7 +7,7 @@ dat<-read.csv("../data/client_data.csv")
 
 
 UI <- pageWithSidebar(
-  headerPanel('California is Artsy'),
+  headerPanel('California Gets Artsy'),
   sidebarPanel(
     selectInput('school', 'Schools', c("ALL", as.character(dat[,5]))),
     selectInput('facet', 'Facet', c("ALL", "age", "gender", "income"))
