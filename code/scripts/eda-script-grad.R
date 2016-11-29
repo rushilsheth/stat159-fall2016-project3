@@ -8,7 +8,7 @@ dat<-dat[complete.cases(dat),]
 sub_dat<-dat[,21:26]
 for (i in 1:6){
   sub_dat[,i]<-as.numeric(as.character(sub_dat[,i]))
-}
+} 
 
 sink("../../data/eda-output-grad.txt")
 print("Summary Statistics of Grad-related Variables")
@@ -21,7 +21,7 @@ sink()
 #create frequency bar-chart for grad ethnicity 
 ethnicity<-c("Total","White","Black","Hispanic","Asian","Other")
 avg_per<-c(mean(sub_dat$Grad_Rate),mean(sub_dat$Grad_Rate_White),mean(sub_dat$Grad_Rate_Black),mean(sub_dat$Grad_Rate_Hisp),
-mean(sub_dat$Grad_Rate_Asian),mean(sub_dat$Grad_Rate_Other))
+mean(sub_dat$Grad_Rate_Asian),mean(sub_dat$Grad_Rate_White)+mean(sub_dat$Grad_Rate_Black)+mean(sub_dat$Grad_Rate_Hisp)+mean(sub_dat$Grad_Rate_Asian)-1.5)
 png("../../images/EDA/barplot-grad-ethnicity.png")
 barplot(avg_per,names.arg=ethnicity,xlab="Ethnicity Breakdown",ylab="Grad Rate",ylim=c(0,0.6),main="Barplot of
 Graduation Ethnicity",col="lightblue")

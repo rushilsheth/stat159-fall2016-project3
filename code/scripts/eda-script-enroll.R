@@ -33,9 +33,9 @@ hist(dat$Avg_Fam_Inc,main="Histogram of Averag Family Income", xlab="Average Fam
 
 
 #create frequency bar-chart for enrollment ethnicity and gender variables
-ethnicity<-c("White","Black","Hispanic","Asian","Other")
+ethnicity<-c("White","Black","Hispanic","Asian"," Other")
 avg_per<-c(mean(dat$Enroll_White),mean(dat$Enroll_Black),
-mean(dat$Enroll_Hisp),mean(dat$Enroll_Asian),mean(dat$Enroll_Other))
+mean(dat$Enroll_Hisp),mean(dat$Enroll_Asian),1-mean(dat$Enroll_White)-mean(dat$Enroll_Black)-mean(dat$Enroll_Hisp)-mean(dat$Enroll_Asian))
 png("../../images/EDA/barplot-enroll-ethnicity.png")
 barplot(avg_per,names.arg=ethnicity,main="Barplot of Enrollment Ethnicity",ylim=c(0,0.4), xlab="Ethnicity Breakdown",ylab="Enrollment Rate", col="lightblue")
 
