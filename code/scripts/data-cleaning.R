@@ -32,7 +32,11 @@ clean_data_rm <- clean_data[,-rem]
 
 client_data <- clean_data_rm[-c(2,3),]
 
-header <- c("UNIT_ID", "OPE_ID", "OPE_ID6", "INST", "City", "State", "Zip_Code", "Accreditor", "URL_main", "URL_net_price", "Enroll_White", "Enroll_Black", "Enroll_Hisp", "Enroll_Asian", "Enroll_AmericanIndian", "Enroll_PacificIslander", "Enroll_2orMore", "Enroll_nonRes", "Enroll_Unknown" ,"Enroll_Men", "Enroll_Women", "Avg_Age", "Avg_Fam_Inc", "Med_Fam_Inc", "Grad_Rate", "Grad_Rate_White", "Grad_Rate_Black", "Grad_Rate_Hisp", "Grad_Rate_Asian", "Grad_Rate_AmericanIndian", "Grad_Rate_PacificIslander", "Grad_Rate_2orMore", "Grad_Rate_nonRes", "Grad_Rate_Unkown", "Total_enroll")
+header <- c("UNIT_ID", "OPE_ID", "OPE_ID6", "INST", "City", "State", "Zip_Code", "Accreditor", "URL_main", "URL_net_price", "Enroll_White", "Enroll_Black", "Enroll_Hisp", "Enroll_Asian", "Enroll_AmericanIndian", "Enroll_PacificIslander", "Enroll_2orMore", "Enroll_nonRes", "Enroll_Unknown" ,"Enroll_Men", "Enroll_Women", "Avg_Age", "Avg_Fam_Inc", "Med_Fam_Inc", "Grad_Rate", "Grad_Rate_White", "Grad_Rate_Black", "Grad_Rate_Hisp", "Grad_Rate_Asian", "Grad_Rate_AmericanIndian", "Grad_Rate_PacificIslander", "Grad_Rate_2orMore", "Grad_Rate_nonRes", "Grad_Rate_Unkown", "Total_enroll", "Region")
+
+region <- c(1, 3, 3, 1, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 1, 3, 1, 1, 1, 3, 3)
+
+client_data <- cbind(client_data, region)
 
 colnames(client_data) <- header
 
@@ -41,5 +45,5 @@ colnames(client_data) <- header
 #make columns with text into characters
 
 
-write.csv(client_data, file = "data/client_data.csv")
+write.csv(client_data, file = "data/client-data.csv")
 
