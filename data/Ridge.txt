@@ -3,7 +3,7 @@ Output of Ridge Regression with 10-fold CV on the Full Data Set
 Call:  glmnet(x = full_credit, y = y_full, alpha = 0, lambda = lambda_min_ridge,      standardize = FALSE, intercept = FALSE) 
 
      Df   %Dev Lambda
-[1,]  8 0.9779 0.1233
+[1,]  9 0.9781 0.1233
 
 Ridge MSE of Test Data Set
 [1] 0.2653839
@@ -12,14 +12,15 @@ Minimum Lambda
 [1] 0.1232847
 
 Coefficients for Ridge Regression Model on Full Data Set
-9 x 1 sparse Matrix of class "dgCMatrix"
+10 x 1 sparse Matrix of class "dgCMatrix"
                        1
 (Intercept)   .         
-Enroll_Black  0.12267553
-Enroll_Hisp  -0.03202890
-Enroll_Asian  0.08976891
-Enroll_Women -0.04256927
-Avg_Age      -0.05308761
-Avg_Fam_Inc   0.05185053
-Total_enroll -0.03728686
-Grad_Rate     0.71769810
+Enroll_White -0.08608052
+Enroll_Black  0.12489602
+Enroll_Hisp  -0.03157196
+Enroll_Asian  0.07632927
+Enroll_Women -0.02431853
+Avg_Age      -0.08659823
+Avg_Fam_Inc   0.08410562
+Total_enroll -0.05559133
+Grad_Rate     0.68357878

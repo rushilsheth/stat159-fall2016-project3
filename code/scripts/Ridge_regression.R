@@ -43,7 +43,7 @@ ridge_MSE <- mean((ridge_predict - test_set$Grad_Rate)^2)
 # Find coeff for best value
 
 # Create new x and y variables
-full_credit <- as.matrix(scaled_client[ ,2:9])
+full_credit <- as.matrix(scaled_client[ ,1:9])
 y_full <- scaled_client$Grad_Rate
 
 ridge_fit <- glmnet(x = full_credit, y = y_full, lambda = lambda_min_ridge,
