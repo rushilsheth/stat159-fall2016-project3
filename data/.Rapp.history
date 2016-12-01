@@ -1,0 +1,2 @@
+load("/Users/atullanka/Documents/stat159-fall2016-project3/data/Lasso.RData")
+ls()
