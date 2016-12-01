@@ -8,7 +8,7 @@ load('data/train_test.RData')
 scaled_data <- read.csv("data/scaled-client.csv")[, -1]
 
 
-test_x <- model.matrix(Grad_Rate ~ ., test_set)[,2:9]
+test_x <- model.matrix(Grad_Rate ~ ., test_set)[,-1]
 test_y <- test_set$Grad_Rate
 
 # Now begin pcr regression method
@@ -26,7 +26,7 @@ validationplot(pcr_fit, val.type = 'MSEP')
 dev.off()
 
 # Calculate test MSE
-pcr_pred <- predict(pcr_fit, ncomp = lambda_min_pcr, newdata = test_set)
+pcr_pred <- predict(pcr_fit, ncomp = lambda_min_pcr, newdata = test_x)
 pcr_MSE <- mean((pcr_pred - test_y)^2)
 
 # Find coeff for best value 
