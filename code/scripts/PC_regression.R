@@ -8,7 +8,7 @@ load('data/train_test.RData')
 scaled_data <- read.csv("data/scaled-client.csv")[, -1]
 
 
-test_x <- model.matrix(Grad_Rate ~ ., test_set)[,2:9]
+test_x <- model.matrix(Grad_Rate ~ ., test_set)[,-1]
 test_y <- test_set$Grad_Rate
 
 # Now begin pcr regression method
