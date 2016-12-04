@@ -1,0 +1,29 @@
+OLS model summary 
+
+Call:
+lm(formula = Grad_Rate ~ ., data = scaled_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.5723 -0.2669 -0.0894  0.2038  1.4565 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)   
+(Intercept)   2.889e-17  1.058e-01   0.000  1.00000   
+Enroll_White -3.564e-01  1.557e-01  -2.289  0.03441 * 
+Enroll_Black  4.494e-01  1.235e-01   3.638  0.00188 **
+Enroll_Hisp  -5.446e-02  1.602e-01  -0.340  0.73781   
+Enroll_Asian  2.402e-01  1.362e-01   1.764  0.09471 . 
+Enroll_Women -8.527e-02  1.291e-01  -0.661  0.51718   
+Avg_Age      -2.724e-01  3.455e-01  -0.789  0.44065   
+Avg_Fam_Inc   3.880e-01  3.243e-01   1.196  0.24706   
+Total_enroll -2.006e-01  1.144e-01  -1.754  0.09651 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5495 on 18 degrees of freedom
+Multiple R-squared:  0.7909,	Adjusted R-squared:  0.698 
+F-statistic: 8.513 on 8 and 18 DF,  p-value: 8.994e-05
+
+MSE 
+[1] 0.2013151
