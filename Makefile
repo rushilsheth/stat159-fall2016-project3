@@ -36,7 +36,7 @@ regressions:
 	
 session-info:
 	bash session-info.sh 
-	Rscript code/scripts/session.info.R
+	Rscript code/scripts/session-info.R
 
 report: report/sections/*.Rmd
 	cat $(<) > report/report.Rmd # automatic variable
