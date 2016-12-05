@@ -25,9 +25,15 @@ pandoc --version >> $info
 echo >> $info
 echo >> $info
 
+# Need version for Latex
+
+echo "LaTeX Version" >> $info 
+echo "-------------" >> $info
+LaTeX --version >> $info 
+echo >> $info
+echo >> $info
+
 # Version of R
 echo "R Version" >> $info
 echo "---------" >> $info
-cd code/scripts; Rscript session.info.R
-
-# Need version for Latex
+Rscript session-info.R
