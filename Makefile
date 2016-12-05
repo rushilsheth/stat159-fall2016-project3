@@ -42,9 +42,12 @@ report: report/sections/*.Rmd
 	cat $(<) > report/report.Rmd # automatic variable
 	Rscript -e 'library(rmarkdown); render("report/report.Rmd")'
 
-slides:
-	Rscript -e 'library(rmarkdown); render("slides/presentation.Rmd")'
+slides: slides/presentation.html
 
+# This target will generate the presentation in html output. 
+slides/presentation.html: 
+	Rscript -e "library(rmarkdown); render('slides/presentation.Rmd')"
+	
 shiny:
 	R -e "shiny::runApp('shiny/app.R')"
 
