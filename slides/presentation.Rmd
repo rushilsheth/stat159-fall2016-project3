@@ -57,21 +57,17 @@ load('../data/Lasso.Rdata')
 load('../data/Ridge.Rdata')
 load('../data/PLSR.Rdata')
 library(xtable)
+Regression <- c('OLS','Ridge', 'Lasso', 'PCR', 'PLSR')
+MSE <- c(ols_mse, ridge_MSE, test_mse, pcr_MSE, mse)
+mse_chart <- data.frame(Regression, MSE)
+mse_tbl <- xtable(mse_chart,
+               caption = 'Test MSE Values for the Regression Techniques',
+               digits = 7)
 
-coef_matrix <- matrix(data = c(as.numeric(OLS_summary$coefficients), 
-                                  as.numeric(ridge_coef_full),
-                                  as.numeric(lasso_coef),0, 
-                                  as.numeric(pcr_coef_full), 0, 
-                                  as.numeric(coeff)), 
-                                  nrow = 12, ncol = 5)
+print(mse_tbl, caption.placement = 'top',
+      comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
 
-colnames(coef_matrix) <- c('OLS', 'Ridge', 'Lasso', 'PC', 'PLS')
-rownames(coef_matrix) <- c('Intercept', 'Income', 'Limit', 'Rating', 'Cards',
-                           'Age', 'Education', 'GenderFemale', 'StudentYes',
-                           'MarriedYes', 'EthnicityAsian',
-                           'EthnicityCaucasian')
-print(xtable(coef_matrix, caption = 'Regression Coefficients', digits = 4),
-      type = 'latex', comment = FALSE)
 
 ```
 
