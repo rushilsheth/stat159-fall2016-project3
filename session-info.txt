@@ -42,5 +42,42 @@ There is no warranty, not even for merchantability or fitness
 for a particular purpose.
 
 
+LaTeX Version
+-------------
+pdfTeX 3.14159265-2.6-1.40.17 (TeX Live 2016)
+kpathsea version 6.2.2
+Copyright 2016 Han The Thanh (pdfTeX) et al.
+There is NO warranty.  Redistribution of this software is
+covered by the terms of both the pdfTeX copyright and
+the Lesser GNU General Public License.
+For more information about these matters, see the file
+named COPYING and the pdfTeX source.
+Primary author of pdfTeX: Han The Thanh (pdfTeX) et al.
+Compiled with libpng 1.6.21; using libpng 1.6.21
+Compiled with zlib 1.2.8; using zlib 1.2.8
+Compiled with xpdf version 3.04
+
+
 R Version
 ---------
+R version 3.3.1 (2016-06-21)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.11.6 (El Capitan)
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  base     
+
+other attached packages:
+ [1] ggplot2_2.1.0  reshape2_1.4.2 plyr_1.8.4     pls_2.5-0      pander_0.6.0  
+ [6] glmnet_2.0-5   foreach_1.4.3  Matrix_1.2-6   knitr_1.14     rmarkdown_1.0 
+[11] xtable_1.8-2  
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_0.12.7      lattice_0.20-33  codetools_0.2-14 digest_0.6.10   
+ [5] grid_3.3.1       gtable_0.2.0     magrittr_1.5     scales_0.4.0    
+ [9] evaluate_0.9     stringi_1.1.1    iterators_1.0.8  tools_3.3.1     
+[13] stringr_1.1.0    munsell_0.4.3    colorspace_1.2-6 htmltools_0.3.5 
+[17] methods_3.3.1   
