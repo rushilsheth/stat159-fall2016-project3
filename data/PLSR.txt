@@ -1,0 +1,45 @@
+Output of PLSR with 10-fold CV on the Full Data Set
+Data: 	X dimension: 20 9 
+	Y dimension: 20 1
+Fit method: kernelpls
+Number of components considered: 9
+
+VALIDATION: RMSEP
+Cross-validated using 10 random segments.
+       (Intercept)  1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps
+CV           1.097    1.080   0.9695   0.8607   0.9383   1.0021    1.041   0.9792
+adjCV        1.097    1.047   0.9374   0.8356   0.9086   0.9683    1.005   0.9482
+       8 comps  9 comps
+CV      0.9900    1.041
+adjCV   0.9577    1.005
+
+TRAINING: % variance explained
+           1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps
+X            29.89    57.17    65.37    73.70    81.82    88.32    96.46    97.30
+Grad_Rate    64.89    77.22    81.34    81.89    82.03    82.10    82.15    82.47
+           9 comps
+X           100.00
+Grad_Rate    82.48
+NULL
+
+-------------------------------------------------------------------------
+ Enroll_White   Enroll_Black   Enroll_Hisp   Enroll_Asian   Enroll_Women 
+-------------- -------------- ------------- -------------- --------------
+   -0.3016         0.4346        -0.1276        0.2676        -0.1466    
+-------------------------------------------------------------------------
+
+Table: Table continues below
+
+ 
+--------------------------------------
+ Avg_Age   Avg_Fam_Inc   Total_enroll 
+--------- ------------- --------------
+ -0.3083      0.264        -0.1903    
+--------------------------------------
+
+
+Test MSE:
+[1] 0.2797164
+
+Best Number of Components:
+[1] 3

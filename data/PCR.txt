@@ -1,0 +1,43 @@
+Output of PCR with 10-fold CV on the Full Data Set
+Data: 	X dimension: 20 9 
+	Y dimension: 20 1
+Fit method: svdpc
+Number of components considered: 9
+
+VALIDATION: RMSEP
+Cross-validated using 10 random segments.
+       (Intercept)  1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps
+CV           1.097    1.059    1.292    1.190    1.241   0.7046   0.7243   1.0164
+adjCV        1.097    1.057    1.239    1.145    1.198   0.6941   0.7050   0.9786
+       8 comps  9 comps
+CV      0.9673    1.041
+adjCV   0.9356    1.005
+
+TRAINING: % variance explained
+           1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps
+X            39.74    58.41    71.15    81.75    89.37    94.24    97.15    99.82
+Grad_Rate    14.11    65.64    66.84    68.14    74.62    80.12    81.12    81.95
+           9 comps
+X           100.00
+Grad_Rate    82.48
+NULL
+
+Minimum Lambda for PCR
+[1] 5
+
+PCR MSE of Test Data Set
+[1] 0.3119941
+
+Coefficients of using PCR Model on Full Data Set
+, , 5 comps
+
+              Grad_Rate
+Enroll_White -0.2245337
+Enroll_Black  0.4223527
+Enroll_Hisp  -0.2790302
+Enroll_Asian  0.3061350
+Enroll_Women -0.1230239
+Avg_Age      -0.2268559
+Avg_Fam_Inc   0.1307422
+Total_enroll -0.1872408
+

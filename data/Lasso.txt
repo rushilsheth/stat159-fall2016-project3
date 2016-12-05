@@ -1,0 +1,26 @@
+Output of Lasso Regression with 10-fold CV on the Full Data Set
+
+Call:  glmnet(x = scaled_x, y = scaled_y, alpha = 1, lambda = best_lambda) 
+
+     Df   %Dev  Lambda
+[1,]  8 0.7895 0.01322
+Coefficients
+------------------------------------------------------------------------
+ (Intercept)   Enroll_White   Enroll_Black   Enroll_Hisp   Enroll_Asian 
+------------- -------------- -------------- ------------- --------------
+  1.274e-16      -0.3308         0.4332       -0.04982        0.2342    
+------------------------------------------------------------------------
+
+Table: Table continues below
+
+ 
+-----------------------------------------------------
+ Enroll_Women   Avg_Age   Avg_Fam_Inc   Total_enroll 
+-------------- --------- ------------- --------------
+   -0.06972     -0.2907     0.3437         -0.188    
+-----------------------------------------------------
+
+[1] "TestMSE:"
+[1] 0.322184
+[1] "Best Lambda:"
+[1] 0.01321941
