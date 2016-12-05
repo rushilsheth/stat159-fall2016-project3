@@ -57,16 +57,6 @@ load('../data/Lasso.Rdata')
 load('../data/Ridge.Rdata')
 load('../data/PLSR.Rdata')
 library(xtable)
-Regression <- c('OLS','Ridge', 'Lasso', 'PCR', 'PLSR')
-MSE <- c(ols_mse, ridge_MSE, test_mse, pcr_MSE, mse)
-mse_chart <- data.frame(Regression, MSE)
-mse_tbl <- xtable(mse_chart,
-               caption = 'Test MSE Values for the Regression Techniques',
-               digits = 7)
-
-print(mse_tbl, caption.placement = 'top',
-      comment = getOption('xtable.comment', FALSE),
-      include.rownames = FALSE)
 
 
 ```
