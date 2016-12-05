@@ -4,38 +4,78 @@ author: Atul Lanka, Rushil Sheth, Timothy Park, Yuyu Zhang
 date: December 6th 2016 
 output: ioslides_presentation
 ---
-```{r,echo=FALSE, message=FALSE}
 
-options(xtable.comment = FALSE)
-options(knitr.comment = FALSE)
-library(glmnet)
-library(pls)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Objective
+# Background  
 
-## Overview
-
+## Introduction  
+Goals:  
+1. Determine succesful 4-year art schools in California
+2. Develop a Shiny Web App to observe the Difference between Two art schools
 
 ## Original Data
+Source: College Scorecard
 
-## Scaled Data
+Data from Most-Recent-Cohorts-All-Data-Elements.csv and consists of many variables
+
+# Process
+
+## Cleaned Data
+
+Actually this data set contained way to many variables
+1. Filtered for California 4-year art schools
+2. Interested in Columns associated with:
+	- Enrollment
+	- Ethnicity
+	- Age
+	- Graduation Rate
+	- Gender
+
+## Method - Models  
+The following models were considered to help our client: 
+- Ordinary Least Squares Regression
+- Ridge Regression 
+- Lasso Regression
+- Principal Components Regression
+- Partial Least Squares Regression  
 
 
-# Regression Models
+# Analysis  
 
+## Summary 
+```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center"}
+load('../data/OLS.Rdata')
+load('../data/PCR.Rdata')
+load('../data/Lasso.Rdata')
+load('../data/Ridge.Rdata')
+load('../data/PLSR.Rdata')
+library(xtable)
 
+coef_matrix <- matrix(data = c(as.numeric(OLS_summary$coefficients), 
+                                  as.numeric(ridge_coef_full),
+                                  as.numeric(lasso_coef),0, 
+                                  as.numeric(pcr_coef_full), 0, 
+                                  as.numeric(coeff)), 
+                                  nrow = 12, ncol = 5)
 
-# Results
-```{r,echo=FALSE, message=FALSE}
-
-options(xtable.comment = FALSE)
-options(knitr.comment = FALSE)
-library(glmnet)
-library(pls)
-library(reshape2)
-library(ggplot2)
+colnames(coef_matrix) <- c('OLS', 'Ridge', 'Lasso', 'PC', 'PLS')
+rownames(coef_matrix) <- c('Intercept', 'Income', 'Limit', 'Rating', 'Cards',
+                           'Age', 'Education', 'GenderFemale', 'StudentYes',
+                           'MarriedYes', 'EthnicityAsian',
+                           'EthnicityCaucasian')
+print(xtable(coef_matrix, caption = 'Regression Coefficients', digits = 4),
+      type = 'latex', comment = FALSE)
 
 ```
 
-# Conclusions
+## App  
+1. Choose 2 schools to compare
+2. Choose what variable to compare:
+	- Gender 
+	- Ethnicity 
+	- Graduation Rate
+3. Decide the chart type 
+4. Output: 2 charts(of the specified type) for each school using the choosen variable
