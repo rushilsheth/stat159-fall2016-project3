@@ -1,11 +1,8 @@
-<<<<<<< HEAD
+
 # variable for url
 url = https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv
 
-.PHONY: data eda report shiny clean all 
-=======
 .PHONY: data eda regressions report shiny clean all 
->>>>>>> 8e50cd1b2cd7c5d16d0c0e9dc6955aeffb52c6c8
 
 all: eda data report slides session-info 
 
@@ -53,8 +50,3 @@ shiny:
 
 clean: 
 	rm -f report/report.pdf
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 8e50cd1b2cd7c5d16d0c0e9dc6955aeffb52c6c8
