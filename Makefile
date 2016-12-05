@@ -1,4 +1,4 @@
-.PHONY: data eda report shiny clean all 
+.PHONY: data eda regressions report shiny clean all 
 
 all: eda data report slides session-info 
 
@@ -8,7 +8,28 @@ data:
 eda:
 	Rscript code/scripts/eda-script-enroll.R
 	Rscript code/scripts/eda-script-grad.R
+ols:
+	Rscript code/scripts/ols_regression.R
 
+ridge: 
+	Rscript code/scripts/Ridge-regression.R
+
+lasso:
+	Rscript code/scripts/Lasso_regression.R 
+
+pcr:
+	Rscript code/scripts/PC_regression.R
+
+plsr:
+	Rscript code/scripts/PLS_regression.R
+
+regressions:
+	make ols
+	make ridge
+	make lasso
+	make pcr
+	make plsr
+	
 session-info:
 	bash session-info.sh 
 	Rscript code/scripts/session.info.R
