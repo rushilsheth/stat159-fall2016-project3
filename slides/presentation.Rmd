@@ -1,0 +1,41 @@
+---
+title: "Predictive Modeling For California Art Colleges"
+author: Atul Lanka, Rushil Sheth, Timothy Park, Yuyu Zhang
+date: December 6th 2016 
+output: ioslides_presentation
+---
+```{r,echo=FALSE, message=FALSE}
+
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+library(glmnet)
+library(pls)
+```
+
+# Objective
+
+## Overview
+
+
+## Original Data
+
+## Scaled Data
+
+
+# Regression Models
+
+
+
+# Results
+```{r,echo=FALSE, message=FALSE}
+
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+library(glmnet)
+library(pls)
+library(reshape2)
+library(ggplot2)
+
+```
+
+# Conclusions
