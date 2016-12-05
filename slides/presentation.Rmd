@@ -28,6 +28,7 @@ Data from Most-Recent-Cohorts-All-Data-Elements.csv and consists of many variabl
 ## Cleaned Data
 
 Actually this data set contained way to many variables
+
 1. Filtered for California 4-year art schools
 
 2. Interested in Columns associated with:
