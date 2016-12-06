@@ -51,25 +51,28 @@ The following models were considered to help our client:
 # Analysis  
 ## Summary 
 ### EDA Analysis
-   <img src="../images/EDA/histogram-age.png " width="480px">
+   <img src="../images/EDA/histogram-age.png " width="450px">
    <br>
    
-   <img src="../images/EDA/barplot-enroll-gender.png" width="480px">
+   <img src="../images/EDA/barplot-enroll-gender.png" width="450px">
    <br>
    
-   <img src="../images/EDA/barplot-grad-ethnicity.png" width="480px">
+   <img src="../images/EDA/barplot-grad-ethnicity.png" width="450px">
    <br>
    
 ### Model 
-```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center"}
-load('../data/OLS.Rdata')
-load('../data/PCR.Rdata')
-load('../data/Lasso.Rdata')
-load('../data/Ridge.Rdata')
-load('../data/PLSR.Rdata')
-library(xtable)
-
-```
+   <img src="../images/Regression/Lasso_plot.png" width="450px">
+   <br>
+   
+   <img src="../images/Regression/Ridge_plot.png" width="450px">
+   <br>
+   
+   <img src="../images/Regression/Plsr_validationplot.png" width="450px">
+   <br>
+   
+   <img src="../images/Regression/pcr_validationplot.png" width="450px">
+   <br>
+   
 
 ## App  
 1. Choose 2 schools to compare
