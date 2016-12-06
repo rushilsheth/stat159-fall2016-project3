@@ -215,7 +215,6 @@ ggplot(coef_tidy, aes(type,value))+
 
 @
 
-<<<<<<< 7049a517dfdec3095bc262342367576b6a96bf16
 From the p-value and the adjusted R-squared value, the null hypothesis can be rejected and so there exists a linear relationship between the diversity variables and the graduate rate for these art schools. Although, the adjusted R-squared value is relatively low, given that the sample size was limited and the variables used don't directly have an impact on a surface level, this model can be accepted. 
 
 Looking at all the regressions performed and their respective coefficients:
@@ -228,7 +227,6 @@ The largest positive correlation is attributed to the Enrollment of Black studen
 \section{Conclusion}
  
 In conclusion, through EDA analysis, we are able to provide a general overview of selected art institution in California regarding enrollment and graduation data. Through model building, we are able to show that there is a linear relationship between diversity variables and graduation rate in these art schools. Finally, we build an interactive shiny App for school administrators to visualize our analysis results
->>>>>>> added pics
 
 
 
