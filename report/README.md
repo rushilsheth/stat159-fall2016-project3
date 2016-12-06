@@ -2,7 +2,7 @@
    * Introduction, Abstract, Data Cleaning, EDA Analysis, Conclusion: Yuyu Zhang
    * Methods, Analysis: Atul Lanka
    * Shiny: Timothy Park
-   * Compilation of reprot: Rushil Seth
+   * Compilation of sections and overall report: Rushil Sheth
    
 ```
  report.Rnw
