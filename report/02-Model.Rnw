@@ -224,5 +224,5 @@ Looking at all the regressions performed and their respective coefficients:
 
 The largest positive correlation is attributed to the Enrollment of Black students and the largest negative correlation is attributed to the Enrollment of White students. 
 
-\end{document}
+
 
