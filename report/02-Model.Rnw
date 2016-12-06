@@ -138,18 +138,15 @@ Below are the analogous plots for LR and RR. These plots compare log(lambda) val
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/Regression/Ridge_plot.png}
+\includegraphics{images/Regression/Ridge_plot.png}
 \caption{MSE Against lambda values for Ridge regression}
-
- \raggedright
-
+\end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/Regression/Lasso_plot.png}
-\caption{MSE Against lambda values for Lasso regression}}
-
- \raggedright
+\includegraphics{images/Regression/Lasso_plot.png}
+\caption{MSE Against lambda values for Lasso regression}
+\end{figure}
 
 The lambda values in LR and RR determine to what extent the Ridge and Lasso Regression models shrink the effect of regression coefficients. This shrinkage subsequently influences the MSEP errors as seen in the plots. We can note that lasso regression works best with very small lambda values (breaks in the plot) while ridge regression increases in error gradually (continuity). Since Lasso only uses a subset of the coefficient vector while Ridge does not, Lasso involves fewer predictive elements and so a larger tuning (lambda) values would more heavily influence the prediction, and thus the MSE.   
     
@@ -157,22 +154,17 @@ The lambda values in LR and RR determine to what extent the Ridge and Lasso Regr
 
 Below are the plots for cross-validation for PCR and PLSR. They compare the number of components used to the cross-validation MSE (MSEP).
 
+\begin{figure}
+\centering
+\includegraphics{images/Regression/pcr_validationplot.png}
+\caption{Validation Plot for PC Regression}
+\end{figure}  
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/Regression/pcr_validationplot.png}
-\caption{Validation Plot for PC Regression}}
-
- \raggedright
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{images/Regression/Plsr_validation.png}
-\caption{Validation Plot for PLS Regression}}
-
- \raggedright
-
-
+\includegraphics{images/Regression/Plsr_validationplot.png}
+\caption{Validation Plot for PLS Regression}
+\end{figure}
 
 How the dotted red line fits the solid black line indicates how accurate this regression model is for an arbitrary data set. From the graph, it appears as though PCR better matches up the expected error with the training set error since the lines are further apart for PLSR. This can be seen because PLSR minimizes error (MSEP) using fewer components than does PCR, and so there is a potential tradeoff in uncertainty, hence the gap between the lines is accentutaed for PLSR. 
     
@@ -223,4 +215,5 @@ ggplot(coef_tidy, aes(type,value))+
 
 @
 
-From the table of regression coefficients, $%#$%#$%#$%#$%#
+From the table of regression coefficients
+
