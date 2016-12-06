@@ -90,4 +90,3 @@ Figure 4 shows enrollment ethnicity breakdown. The bar-plot indicates White and 
  
 In conclusion, through EDA analysis, we are able to provide a general overview of selected art institution in California regarding enrollment and graduation data. Through model building, we are able to show that there is a linear relationship between diversity variables and graduation rate in these art schools. Finally, we build an interactive shiny App for school administrators to visualize our analysis results
 
-\end{document}
