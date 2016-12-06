@@ -60,20 +60,7 @@ The following models were considered to help our client:
    <img src="../images/EDA/barplot-grad-ethnicity.png" width="450px">
    <br>
    
-### Model 
-   <img src="../images/Regression/Lasso_plot.png" width="450px">
-   <br>
-   
-   <img src="../images/Regression/Ridge_plot.png" width="450px">
-   <br>
-   
-   <img src="../images/Regression/Plsr_validationplot.png" width="450px">
-   <br>
-   
-   <img src="../images/Regression/pcr_validationplot.png" width="450px">
-   <br>
-   
-# Results from Model
+### Results from Model
 ```{r,echo=FALSE, message=FALSE}
 
 options(xtable.comment = FALSE)
