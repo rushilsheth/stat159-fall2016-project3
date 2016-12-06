@@ -73,6 +73,81 @@ The following models were considered to help our client:
    <img src="../images/Regression/pcr_validationplot.png" width="450px">
    <br>
    
+# Results from Model
+```{r,echo=FALSE, message=FALSE}
+
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+library(glmnet)
+library(pls)
+library(reshape2)
+library(ggplot2)
+
+```
+
+```{r results= 'asis', echo = FALSE}
+load('../data/OLS.Rdata')
+load('../data/PCR.Rdata')
+load('../data/Lasso.Rdata')
+load('../data/Ridge.Rdata')
+load('../data/PLSR.Rdata')
+library(xtable)
+Regression <- c('OLS','Ridge', 'Lasso', 'PCR', 'PLSR')
+MSE <- c(ols_mse, ridge_MSE, test_mse, pcr_MSE, mse)
+mse_chart <- data.frame(Regression, MSE)
+mse_tbl <- xtable(mse_chart,
+               caption = 'Test MSE Values for the Regression Techniques',
+               digits = 7)
+
+print(mse_tbl, caption.placement = 'top',
+      comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
+```
+
+```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center"}
+load('../data/OLS.Rdata')
+load('../data/PCR.Rdata')
+load('../data/Lasso.Rdata')
+load('../data/Ridge.Rdata')
+load('../data/PLSR.Rdata')
+library(xtable)
+
+coef_matrix <- matrix(data = c(as.numeric(OLS_summary$coefficients[,1]), 
+                                  as.numeric(ridge_coef_full),
+                                  as.numeric(lasso_coef),0, 
+                                  as.numeric(pcr_coef_full), 0, 
+                                  as.numeric(coeff)), 
+                                  nrow = 9, ncol = 5)
+
+colnames(coef_matrix) <- c('OLS', 'Ridge', 'Lasso', 'PC', 'PLS')
+rownames(coef_matrix) <- c('Intercept', 'Enroll_White', 'Enroll_Black', 'Enroll_Hisp',
+                           'Enroll_Asian', 'Enroll_Women', 'Avg_Age', 'Avg_Fam_Inc',
+                           'Total_enroll')
+print(xtable(coef_matrix, caption = 'Regression Coefficients', digits = 4),
+      type = 'latex', comment = FALSE)
+
+```
+
+```{r, echo = FALSE, message = FALSE, warning=FALSE, fig.cap= 'Estimated Regression Coefficients by Variable and Regression'}
+
+# create a data frame for plotting coefficients.
+coef_df <- data.frame(type = colnames(coef_matrix), t(abs(coef_matrix)))
+# changing the variable names to show what happened after abs value
+colnames(coef_df) <- c('type','Intercept', 'Enroll_White', 'Enroll_Black', 'Enroll_Hisp','Enroll_Asian', 'Enroll_Women', 'Avg_Age', 'Avg_Fam_Inc','Total_enroll')
+
+# use fnc melt to make easier to plot in ggplot. 
+coef_tidy <- melt(coef_df, id.vars = 'type')
+
+# change the variable into a factor 
+coef_tidy$type <- factor(coef_tidy$type, levels = coef_tidy$type)
+
+# Plotting the different coefficients in barcharts. 
+ggplot(coef_tidy, aes(type,value))+
+  geom_bar(aes(fill = type), stat = 'identity')+
+  facet_wrap(~variable, scales = 'free')+
+  ggtitle(label = 'Estimated Regression Coefficients by Variable and Regression')
+
+```
 
 ## App  
 1. Choose 2 schools to compare
