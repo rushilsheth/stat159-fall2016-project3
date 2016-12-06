@@ -1,0 +1,73 @@
+\section{Methods}
+We built various linear models from the \textit{client-data.csv} data set. We predicted the variable `Grad\_Rate` in terms of eight predictors: proportion of White students enrolled, proportion of Black students enrolled, proportion of Hispanic students enrolled, proportion of Asian students enrolled, proprotion of Women enrolled, Average age of enrolled students, Average Family Income and Total Enrollment. 
+
+We created 5 different scripts for running various regression methods: Ordinary Least Squares, Ridge regression, Lasso Regression, Principal Components Regression, and Partial Least Squares Regression.
+
+Our first method, was a simple linear model, Oridnary Least Squares. In \textbf{ols\_regression.R}, using the \texttt{lm()} where the y variable is Balance and the x variable is the combination of the the rest of the variables, the results from the OLS regression methods are output. This script's outputs will be used as a basis for all other regression models to compare to. We read in the scaled data set, which in turn is used for the regression model.
+
+Our next two methods, Ridge and Lasso regression, are shrinkage methods. The script, \textbf{Ridge\_regression.R}, performs a ridge regression and \textbf{Lasso\_regression.R} performs a lasso regression. The steps for these two methods are nearly identical:
+
+1. Load \textit{scaled-client.csv}, and \texttt{library(glmnet)} and set the seed, for reproducibility sake.
+
+2. Create a `x` and `y` varible from the training set, read in from my Rdata file containing training and testing set indicies. 
+
+3. Run \texttt{cv.glmnet()} which performs 10-fold cross-validation and outputs an intercept term and standardizes the variables by default. For the function arguements use the `x` and `y` from above, `lambda = 10^seq(10, -2, length = 100)`, `intercept = FALSE`, and `standardize = FALSE` because our \textit{scaled-client.csv} is already standardized. For ridge regression we use `alpha =0` and for lasso we use `alpha =1`.
+
+4. \texttt{cv.glmnet()} will output a list of models. We decide the best one based of the minimum lambda and then save this lambda value as well as the coefficients associated with it.
+
+5. Next we plot the model and save it to a png.
+
+6. Once we identified the best model we use the \textbf{test\_set} to calculate the test MSE, which will eventually help us compare the performances of all the models.
+
+7. Finally we refit the model to the \textit{scaled-client.csv} which is our entire data set using the lambda from step 4. We save the coefficient estimates and use it in the *Results* section of the report. 
+
+Our next two methods, Principal Components(PCR) and Partial Least Squares regression(PLSR) are dimension reduction methods performed by \textbf{PC\_regression.R} and \textbf{PLS\_regression.R} respectively. The steps for these two regression are very similar to those above, so naturall this outline will not go into as much detail.
+
+1. Load \textit{scaled-client.csv}, and \texttt{library(glmnet)} and set the seed, for reproducibility sake.
+
+2. Create a \texttt{x} and \texttt{y} variable from the training set, read in from the Rdata file containing training and testing set indicies. 
+
+3. Run \texttt{pcr()} or \texttt{plsr()} depending on which model you want, and use arguments \texttt{Grad\_Rate ~ ., data=train\_set, validation = CV and scale = TRUE}.
+
+4. We decide the best model using \texttt{which.min(MODEL$validation$PRESS)} where \texttt{MODEL} is the name of the pcr or plsr model depending on the script.
+
+5. Next we plot the model and save it to a png.
+
+6. Once we identified the best model we use the \textbf{test\_set} to calculate the test MSE, which will eventually help us compare the performances of all the models.
+
+7. Finally we refit the model to the \textit{scaled-client.csv} which is our entire data set using the lambda from step 4. We save the coefficient estimates and use it in the *Results* section of the report. 
+
+\section{Analysis}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: Matrix}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: foreach}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loaded glmnet 2.0-5}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'pls'}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following object is masked from 'package:stats':\\\#\# \\\#\#\ \ \ \  loadings}}\end{kframe}
+\end{knitrout}
+We perform Mean centering and standardization on our data in order to make sure that the coefficients would function properly and in an equivalent manner
+    
+\subsection{Ordinary Least Squares Regression (OLS)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
