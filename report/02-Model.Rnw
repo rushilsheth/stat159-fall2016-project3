@@ -1,5 +1,5 @@
 \section{Methods}
-We built various linear models from the \textit{client-data.csv} data set. We predicted the variable `Grad_Rate` in terms of eight predictors: proportion of White students enrolled, proportion of Black students enrolled, proportion of Hispanic students enrolled, proportion of Asian students enrolled, proprotion of Women enrolled, Average age of enrolled students, Average Family Income and Total Enrollment. 
+We built various linear models from the \textit{client-data.csv} data set. We predicted the variable `Grad\_Rate` in terms of eight predictors: proportion of White students enrolled, proportion of Black students enrolled, proportion of Hispanic students enrolled, proportion of Asian students enrolled, proprotion of Women enrolled, Average age of enrolled students, Average Family Income and Total Enrollment. 
 
 We created 5 different scripts for running various regression methods: Ordinary Least Squares, Ridge regression, Lasso Regression, Principal Components Regression, and Partial Least Squares Regression.
 
