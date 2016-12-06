@@ -38,9 +38,9 @@ session-info:
 	bash session-info.sh 
 	Rscript code/scripts/session-info.R
 
-report: report/sections/*.Rmd
-	cat $(<) > report/report.Rmd # automatic variable
-	Rscript -e 'library(rmarkdown); render("report/report.Rmd")'
+report: report/*.Rnw
+	cat report/*.Rnw > report/report.Rnw 
+    Rscript -e "library(knitr); knit2pdf('report/report.Rnw', output = 'report/report.tex')"
 
 slides: slides/presentation.html
 
