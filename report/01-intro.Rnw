@@ -24,7 +24,7 @@ The overall workflow can be summarized as followed: data cleaning (target school
 
 \section{Data Cleaning}
 
-The raw data used in this project comes from College ScoreCard, downloaded \href{https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv}{here}, developed by the U.S Department of Education. To select targeted school, we choose specifically four-year art schools in CA (these are indicated by the abbreviation "CCBASIC==30" and "STABBR=="CA" respectively in the raw data). We also extracted schools' location, zip code, website etc in similar way.
+The raw data used in this project comes from College ScoreCard, downloaded, developed by the U.S Department of Education. To select targeted school, we choose specifically four-year art schools in CA (these are indicated by the abbreviation "CCBASIC==30" and "STABBR=="CA" respectively in the raw data). We also extracted schools' location, zip code, website etc in similar way.
 
 There are several indicators for diversity, which we identified as gender, average family income, average age and ethnicity. For the dependent variables, we choose enrollment and graduation rates. We further divide enrollment based on ethnicity (enroll-white is percentage of enrolled people that are white etc), gender(enroll-men etc), graduation based on ethnicity(grad-rate-asian etc). Note that the raw data doesn't provide graduation based on gender. We also catalog schools based on their region (1 indicates North Cal, 2 Central Cal and 3 for South Cal).
 
@@ -35,11 +35,14 @@ Based on the criteria, 31 schools in total are selected and the finalized data i
  
  As the first step of data analysis, EDA tries to provide a general picture of average school performance. A picture is worth a thousand words, so let's take a look at what information the data discloses.
   
- \begin{figure}
+
+\begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{../images/histogram-age.png}
-\caption{Average Age of Enrolled Students} 
+\includegraphics[width=0.5\textwidth]{images/EDA/histogram-age.png}
+\caption{Average Age of Enrolled Students}
+
  \raggedright
+
  
    Figure 1 shows enrollment rate vs average age. We can see two peaks at 22-24 and 28-30. It's expected that most people will choose to pursue a professional art degree after college, potentially as a way to change their c`areer path (majority of universities/college don't have specialized art/design program). There's also a scenario where after working for several years, people decides to go back to school either for career switch or further their knowledge and skills.
 \end{figure}  
@@ -47,7 +50,7 @@ Based on the criteria, 31 schools in total are selected and the finalized data i
  
  \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{../images/histogram-income.png}
+\includegraphics[width=0.5\textwidth]{images/EDA/histogram-income.png}
 \caption{Average Family Income of Enrolled Students}
 
  \raggedright
@@ -56,7 +59,7 @@ Figure 2 shows enrollment rate vs average family income. Again we can see relati
  
  \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{../images/barplot-enroll-gender.png}
+\includegraphics[width=0.5\textwidth]{images/EDA/barplot-enroll-gender.png}
 \caption{Gender Distribution of Enrolled Students}
 
   
@@ -66,7 +69,7 @@ Figure 2 shows enrollment rate vs average family income. Again we can see relati
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{../images/barplot-enroll-ethnicity.png}
+\includegraphics[width=0.5\textwidth]{images/EDA/barplot-enroll-ethnicity.png}
 \caption{Ethnicity Distribution of Enrolled Students}
 
 
@@ -76,7 +79,7 @@ Figure 4 shows enrollment ethnicity breakdown. The bar-plot indicates White and 
  
  \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{../images/barplot-grad-ethnicity.png}
+\includegraphics[width=0.5\textwidth]{images/EDA/barplot-grad-ethnicity.png}
 \caption{Ethnicity Distribution of Graduated Students}
  
  
