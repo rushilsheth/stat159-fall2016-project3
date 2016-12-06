@@ -11,7 +11,7 @@ Our next two methods, Ridge and Lasso regression, are shrinkage methods. The scr
 
 2. Create a `x` and `y` varible from the training set, read in from my Rdata file containing training and testing set indicies. 
 
-3. Run \texttt{cv.glmnet()} which performs 10-fold cross-validation and outputs an intercept term and standardizes the variables by default. For the function arguements use the `x` and `y` from above, `lambda = 10^seq(10, -2, length = 100)`, `intercept = FALSE`, and `standardize = FALSE` because our \textit{scaled-client.csv} is already standardized. For ridge regression we use `alpha =0` and for lasso we use `alpha =1`.
+3. Run \texttt{cv.glmnet()} which performs 10-fold cross-validation and outputs an intercept term and standardizes the variables by default. For ridge regression we use `alpha =0` and for lasso we use `alpha =1`.
 
 4. \texttt{cv.glmnet()} will output a list of models. We decide the best one based of the minimum lambda and then save this lambda value as well as the coefficients associated with it.
 
@@ -37,6 +37,190 @@ Our next two methods, Principal Components(PCR) and Partial Least Squares regres
 
 7. Finally we refit the model to the \textit{scaled-client.csv} which is our entire data set using the lambda from step 4. We save the coefficient estimates and use it in the *Results* section of the report. 
 
+\section{Analysis}
+<<echo=FALSE, cache=TRUE>>=
+
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+library(glmnet)
+library(pls)
+library(reshape2)
+library(ggplot2)
+@
+We perform Mean centering and standardization on our data in order to make sure that the coefficients would function properly and in an equivalent manner
+    
+\subsection{Ordinary Least Squares Regression (OLS)}
+<<echo=FALSE, cache=TRUE, fig.cap= "MSE value from OLS regression">>=
+load('../data/OLS.RData')
+print(ols_mse)
+@
+We first fit the Ordinary Least Squares Regression model to the data set, with no parameters to be tuned, using hte `lm()` function. The mean square error of the OLS model on the test set is shown above: 0.201315062. We use this as a reference point when comparing with other prediction models.
+
+\subsection{Ridge Regression (RR)}
+We fit the Ridge Regression model to the training set. Firstly, we need to train the model for the best parameter $\lambda$ via cross-validation (`cv.glmet`). Using `predict()` and calling the library package ` *glment* ` to perform the regression, we get the following:
+
+<<echo=FALSE, cache=TRUE,fig.cap= "Lambda and MSE value from Ridge regression">>=
+load('../data/Ridge.RData')
+print(lambda_min_ridge)
+print(ridge_MSE)
+@
+
+From the graph above, we choose the best $\lambda$ given this traning set, which is 0.123 and applied it to the entire data set
+
+The resulting mean square error for the same test set is given above. The 0.265383914 is larger compared to that of the OLS Regression.
+
+\subsection{Lasso Regression (LR)}
+We fit the Lasso Regression model to the training set using the same method, but the difference is that the alpha variable in the function `cv.glmnet()` is changed from 0 to 1. 
+<<echo=FALSE, cache=TRUE,fig.cap= "Lambda and MSE value from Lasso regression">>=
+load('../data/lasso.RData')
+print(best_lambda)
+print(test_mse)
+@
+
+From the graph above, we choose the best $\lambda$ given this traning set, which is also 0.0132 and applied it to the entire data set.
+
+The resulting mean square error for the same test set is given above. The 0.322 does show a slight deterioration compared to that of the OLS Regression.
+
+\subsection{Principal Components Regression (PCR)}
+We  fit the Principal Components Regression to the training set by installing the library package `pls` and using the function `pcr()` to run the cross-validation using the opitimal lambda.
+
+From the validation plot (displayed in the next section), we may find that the lowest cross-validation error occurs when $M = 11$ component are used. Therefore, we compute the test MSE:
+
+<<echo=FALSE, cache=TRUE,fig.cap= "MSE value from PC regression">>=
+load('../data/PCR.RData')
+print(pcr_MSE)
+@
+
+The resulting mean square error for the same test set is given above. The 0.311994108 is slightly higher than the the OLS Regression's, but lower than Lasso. We also fit the model with the best choice of $M$, the number of components to the entire data set for future purpose.
+
+\subsection{Partial Least Squares Regression (PLSR)}
+We fit the Partial Least Squares Regression to the training set by installing the same library package `pcr` and using the function `plsr()` to run the cross-validation using the opitimal lambda or tuning parameter.
+
+From the validation plot (displayed in the next section), we may find that the lowest cross-validation error occurs when $M = 4$ component are used. Therefore, we compute the test MSE:
+
+<<echo=FALSE, cache=TRUE,fig.cap= "MSE value from PLS regression">>=
+load('../data/PLSR.RData')
+print(mse)
+@
+
+The resulting mean square error for the same test set is given above: 0.2797164397 This too is larger than the OLS Regression's. We also fit the model with the best choice of $M$, the number of components to the entire data set for future purpose.
+
+Below is a table that summarizes the MSE values for each regression:
+
+<<echo=FALSE, cache=TRUE>>=
+load('../data/OLS.Rdata')
+load('../data/PCR.Rdata')
+load('../data/Lasso.Rdata')
+load('../data/Ridge.Rdata')
+load('../data/PLSR.Rdata')
+library(xtable)
+Regression <- c('OLS','Ridge', 'Lasso', 'PCR', 'PLSR')
+MSE <- c(ols_mse, ridge_MSE, test_mse, pcr_MSE, mse)
+mse_chart <- data.frame(Regression, MSE)
+mse_tbl <- xtable(mse_chart,
+               caption = 'Test MSE Values for the Regression Techniques',
+               digits = 7)
+
+print(mse_tbl, caption.placement = 'top',
+      comment = getOption('xtable.comment', FALSE),
+      include.rownames = FALSE)
+@
 
 
-\end{document}
+So, apart from the OLS Regression's MSE, the Ridge regression's MSE is the smallest from the 4 other methods. 
+
+\section{Results}
+In this section we study and compare the outputs for each regression.
+  
+\subsection{Lasso and Ridge Regression}
+
+Below are the analogous plots for LR and RR. These plots compare log(lambda) values to MSEP.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/Regression/Ridge_plot.png}
+\caption{MSE Against lambda values for Ridge regression}
+
+ \raggedright
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/Regression/Lasso_plot.png}
+\caption{MSE Against lambda values for Lasso regression}}
+
+ \raggedright
+
+The lambda values in LR and RR determine to what extent the Ridge and Lasso Regression models shrink the effect of regression coefficients. This shrinkage subsequently influences the MSEP errors as seen in the plots. We can note that lasso regression works best with very small lambda values (breaks in the plot) while ridge regression increases in error gradually (continuity). Since Lasso only uses a subset of the coefficient vector while Ridge does not, Lasso involves fewer predictive elements and so a larger tuning (lambda) values would more heavily influence the prediction, and thus the MSE.   
+    
+\subsection{PCR and PLSR}
+
+Below are the plots for cross-validation for PCR and PLSR. They compare the number of components used to the cross-validation MSE (MSEP).
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/Regression/pcr_validationplot.png}
+\caption{Validation Plot for PC Regression}}
+
+ \raggedright
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{images/Regression/Plsr_validation.png}
+\caption{Validation Plot for PLS Regression}}
+
+ \raggedright
+
+
+
+How the dotted red line fits the solid black line indicates how accurate this regression model is for an arbitrary data set. From the graph, it appears as though PCR better matches up the expected error with the training set error since the lines are further apart for PLSR. This can be seen because PLSR minimizes error (MSEP) using fewer components than does PCR, and so there is a potential tradeoff in uncertainty, hence the gap between the lines is accentutaed for PLSR. 
+    
+\subsection{Additional Plots}
+
+<<echo=FALSE, cache=TRUE, fig.height=4, fig.width=4>>=
+load('../data/OLS.Rdata')
+load('../data/PCR.Rdata')
+load('../data/Lasso.Rdata')
+load('../data/Ridge.Rdata')
+load('../data/PLSR.Rdata')
+library(xtable)
+
+coef_matrix <- matrix(data = c(as.numeric(OLS_summary$coefficients[,1]), 
+                                  as.numeric(ridge_coef_full),
+                                  as.numeric(lasso_coef),0, 
+                                  as.numeric(pcr_coef_full), 0, 
+                                  as.numeric(coeff)), 
+                                  nrow = 9, ncol = 5)
+
+colnames(coef_matrix) <- c('OLS', 'Ridge', 'Lasso', 'PC', 'PLS')
+rownames(coef_matrix) <- c('Intercept', 'Enroll_White', 'Enroll_Black', 'Enroll_Hisp',
+                           'Enroll_Asian', 'Enroll_Women', 'Avg_Age', 'Avg_Fam_Inc',
+                           'Total_enroll')
+print(xtable(coef_matrix, caption = 'Regression Coefficients', digits = 4),
+      type = 'latex', comment = FALSE)
+
+@
+
+<<echo=FALSE, cache=TRUE, fig.height=4, fig.width=4, fig.cap= 'Estimated Regression Coefficients by Variable and Regression'>>=
+
+# create a data frame for plotting coefficients.
+coef_df <- data.frame(type = colnames(coef_matrix), t(abs(coef_matrix)))
+# changing the variable names to show what happened after abs value
+colnames(coef_df) <- c('type','Intercept', 'Enroll_White', 'Enroll_Black', 'Enroll_Hisp','Enroll_Asian', 'Enroll_Women', 'Avg_Age', 'Avg_Fam_Inc','Total_enroll')
+
+# use fnc melt to make easier to plot in ggplot. 
+coef_tidy <- melt(coef_df, id.vars = 'type')
+
+# change the variable into a factor 
+coef_tidy$type <- factor(coef_tidy$type, levels = coef_tidy$type)
+
+# Plotting the different coefficients in barcharts. 
+ggplot(coef_tidy, aes(type,value))+
+  geom_bar(aes(fill = type), stat = 'identity')+
+  facet_wrap(~variable, scales = 'free')+
+  ggtitle(label = 'Estimated Regression Coefficients by Variable and Regression')
+
+@
+
+From the table of regression coefficients, $%#$%#$%#$%#$%#
