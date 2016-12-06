@@ -88,11 +88,6 @@ Figure 4 shows enrollment ethnicity breakdown. The bar-plot indicates White and 
 \end{figure}
   
   \paragraph{For a more quantitative data summary, we also include "eda-output-enroll" and "eda-output-grad" in the data file if readers are interested. }
- 
-  
- \section{Conclusion}
- 
-In conclusion, through EDA analysis, we are able to provide a general overview of selected art institution in California regarding enrollment and graduation data. Through model building, we are able to show that there is a linear relationship between diversity variables and graduation rate in these art schools. Finally, we build an interactive shiny App for school administrators to visualize our analysis results
 
 \section{Methods}
 We built various linear models from the \textit{client-data.csv} data set. We predicted the variable `Grad\_Rate` in terms of eight predictors: proportion of White students enrolled, proportion of Black students enrolled, proportion of Hispanic students enrolled, proportion of Asian students enrolled, proprotion of Women enrolled, Average age of enrolled students, Average Family Income and Total Enrollment. 
@@ -234,13 +229,13 @@ Below are the analogous plots for LR and RR. These plots compare log(lambda) val
 
 \begin{figure}
 \centering
-\includegraphics{images/Regression/Ridge_plot.png}
+\includegraphics[width=0.5\textwidth]{images/Regression/Ridge_plot.png}
 \caption{MSE Against lambda values for Ridge regression}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics{images/Regression/Lasso_plot.png}
+\includegraphics[width=0.5\textwidth]{images/Regression/Lasso_plot.png}
 \caption{MSE Against lambda values for Lasso regression}
 \end{figure}
 
@@ -252,13 +247,13 @@ Below are the plots for cross-validation for PCR and PLSR. They compare the numb
 
 \begin{figure}
 \centering
-\includegraphics{images/Regression/pcr_validationplot.png}
+\includegraphics[width=0.5\textwidth]{images/Regression/pcr_validationplot.png}
 \caption{Validation Plot for PC Regression}
 \end{figure}  
 
 \begin{figure}
 \centering
-\includegraphics{images/Regression/Plsr_validationplot.png}
+\includegraphics[width=0.5\textwidth]{images/Regression/Plsr_validationplot.png}
 \caption{Validation Plot for PLS Regression}
 \end{figure}
 
@@ -311,7 +306,11 @@ ggplot(coef_tidy, aes(type,value))+
 
 @
 
-From the table of regression coefficients
+\section{Conclusion}
+ 
+In conclusion, through EDA analysis, we are able to provide a general overview of selected art institution in California regarding enrollment and graduation data. Through model building, we are able to show that there is a linear relationship between diversity variables and graduation rate in these art schools. Finally, we build an interactive shiny App for school administrators to visualize our analysis results
+
+
 
 \section{Shiny App}
 

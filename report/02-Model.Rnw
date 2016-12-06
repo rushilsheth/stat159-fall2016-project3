@@ -138,13 +138,13 @@ Below are the analogous plots for LR and RR. These plots compare log(lambda) val
 
 \begin{figure}
 \centering
-\includegraphics{images/Regression/Ridge_plot.png}
+\includegraphics[width=0.5\textwidth]{images/Regression/Ridge_plot.png}
 \caption{MSE Against lambda values for Ridge regression}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics{images/Regression/Lasso_plot.png}
+\includegraphics[width=0.5\textwidth]{images/Regression/Lasso_plot.png}
 \caption{MSE Against lambda values for Lasso regression}
 \end{figure}
 
@@ -156,13 +156,13 @@ Below are the plots for cross-validation for PCR and PLSR. They compare the numb
 
 \begin{figure}
 \centering
-\includegraphics{images/Regression/pcr_validationplot.png}
+\includegraphics[width=0.5\textwidth]{images/Regression/pcr_validationplot.png}
 \caption{Validation Plot for PC Regression}
 \end{figure}  
 
 \begin{figure}
 \centering
-\includegraphics{images/Regression/Plsr_validationplot.png}
+\includegraphics[width=0.5\textwidth]{images/Regression/Plsr_validationplot.png}
 \caption{Validation Plot for PLS Regression}
 \end{figure}
 
@@ -215,6 +215,7 @@ ggplot(coef_tidy, aes(type,value))+
 
 @
 
+<<<<<<< 7049a517dfdec3095bc262342367576b6a96bf16
 From the p-value and the adjusted R-squared value, the null hypothesis can be rejected and so there exists a linear relationship between the diversity variables and the graduate rate for these art schools. Although, the adjusted R-squared value is relatively low, given that the sample size was limited and the variables used don't directly have an impact on a surface level, this model can be accepted. 
 
 Looking at all the regressions performed and their respective coefficients:
@@ -223,6 +224,11 @@ Looking at all the regressions performed and their respective coefficients:
 - Enrollment of White and Hispanic students, Enrollment of Women, Average Age of Entry and Total Enrollment for the school all have a negative correlation with the graduation rate
 
 The largest positive correlation is attributed to the Enrollment of Black students and the largest negative correlation is attributed to the Enrollment of White students. 
+=======
+\section{Conclusion}
+ 
+In conclusion, through EDA analysis, we are able to provide a general overview of selected art institution in California regarding enrollment and graduation data. Through model building, we are able to show that there is a linear relationship between diversity variables and graduation rate in these art schools. Finally, we build an interactive shiny App for school administrators to visualize our analysis results
+>>>>>>> added pics
 
 
 

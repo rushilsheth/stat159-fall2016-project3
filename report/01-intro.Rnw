@@ -88,9 +88,4 @@ Figure 4 shows enrollment ethnicity breakdown. The bar-plot indicates White and 
 \end{figure}
   
   \paragraph{For a more quantitative data summary, we also include "eda-output-enroll" and "eda-output-grad" in the data file if readers are interested. }
- 
-  
- \section{Conclusion}
- 
-In conclusion, through EDA analysis, we are able to provide a general overview of selected art institution in California regarding enrollment and graduation data. Through model building, we are able to show that there is a linear relationship between diversity variables and graduation rate in these art schools. Finally, we build an interactive shiny App for school administrators to visualize our analysis results
 
