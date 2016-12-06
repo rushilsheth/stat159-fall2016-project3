@@ -198,7 +198,7 @@ The resulting mean square error for the same test set is given above: 0.27971643
 
 Below is a table that summarizes the MSE values for each regression:
 
-<<echo=FALSE, cache=TRUE>>=
+<<echo=FALSE, cache=TRUE, results = 'asis'>>=
 load('../data/OLS.Rdata')
 load('../data/PCR.Rdata')
 load('../data/Lasso.Rdata')
@@ -208,13 +208,8 @@ library(xtable)
 Regression <- c('OLS','Ridge', 'Lasso', 'PCR', 'PLSR')
 MSE <- c(ols_mse, ridge_MSE, test_mse, pcr_MSE, mse)
 mse_chart <- data.frame(Regression, MSE)
-mse_tbl <- xtable(mse_chart,
-               caption = 'Test MSE Values for the Regression Techniques',
-               digits = 7)
+print(xtable(mse_chart, caption = 'Test MSE Values for the Regression Techniques', digits = 7, latex.environments=NULL))
 
-print(mse_tbl, caption.placement = 'top',
-      comment = getOption('xtable.comment', FALSE),
-      include.rownames = FALSE)
 @
 
 
@@ -261,7 +256,7 @@ How the dotted red line fits the solid black line indicates how accurate this re
     
 \subsection{Additional Plots}
 
-<<echo=FALSE, cache=TRUE, fig.height=4, fig.width=4>>=
+<<echo=FALSE, cache=TRUE, fig.height=4, fig.width=4, results = 'asis'>>=
 load('../data/OLS.Rdata')
 load('../data/PCR.Rdata')
 load('../data/Lasso.Rdata')
@@ -285,7 +280,7 @@ print(xtable(coef_matrix, caption = 'Regression Coefficients', digits = 4),
 
 @
 
-<<echo=FALSE, cache=TRUE, fig.height=4, fig.width=4, fig.cap= 'Estimated Regression Coefficients by Variable and Regression'>>=
+<<echo=FALSE, cache=TRUE, fig.height=4, fig.width=4, fig.cap= 'Estimated Regression Coefficients by Variable and Regression', esults = 'asis'>>=
 
 # create a data frame for plotting coefficients.
 coef_df <- data.frame(type = colnames(coef_matrix), t(abs(coef_matrix)))
@@ -305,6 +300,16 @@ ggplot(coef_tidy, aes(type,value))+
   ggtitle(label = 'Estimated Regression Coefficients by Variable and Regression')
 
 @
+
+From the p-value and the adjusted R-squared value, the null hypothesis can be rejected and so there exists a linear relationship between the diversity variables and the graduate rate for these art schools. Although, the adjusted R-squared value is relatively low, given that the sample size was limited and the variables used don't directly have an impact on a surface level, this model can be accepted. 
+
+Looking at all the regressions performed and their respective coefficients:
+
+- Enrollment of Black and Asian students and the Average Family Income of the students all have a positive correlation with the graduation rate 
+- Enrollment of White and Hispanic students, Enrollment of Women, Average Age of Entry and Total Enrollment for the school all have a negative correlation with the graduation rate
+
+The largest positive correlation is attributed to the Enrollment of Black students and the largest negative correlation is attributed to the Enrollment of White students. 
+
 
 \section{Conclusion}
  
