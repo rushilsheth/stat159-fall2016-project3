@@ -42,6 +42,8 @@ report/report.pdf: report/01-intro.Rnw report/02-Model.Rnw report/03-shinyapp.Rn
 	cat report/01-intro.Rnw report/02-Model.Rnw report/03-shinyapp.Rnw > report/report.Rnw 
 	Rscript -e "library(knitr); knit('report/report.Rnw')"
 	pdflatex report.tex
+	cp report.pdf report/report.pdf
+	rm report.pdf
 	#Rscript -e "library(knitr); knit2pdf('report/report.Rnw', output = 'report/report.pdf')"
 
 # This target will generate the presentation in html output. 
