@@ -38,9 +38,10 @@ session-info:
 	bash session-info.sh 
 	Rscript code/scripts/session-info.R
 
-report: report/*.Rnw
-	cat report/*.Rnw > report/report.Rnw 
-    Rscript -e "library(knitr); knit2pdf('report/report.Rnw', output = 'report/report.tex')"
+report/report.pdf: report/01-intro.Rnw report/02-Model.Rnw
+	Rscript -e "library(knitr); knit2pdf('report/report.Rnw', output = 'report/report.pdf')"
+
+	#cat report/01-intro.Rnw, report/02-Model.Rnw > report/report.Rnw 
 
 slides: slides/presentation.html
 
