@@ -51,15 +51,12 @@ The following models were considered to help our client:
 # Analysis  
 ## Summary 
 ### EDA Analysis
-   **Average Age of Enrolled Student**
    <img src="../images/EDA/histogram-age.png " width="480px">
    <br>
    
-   **Gender of Enrolled Student**
    <img src="../images/EDA/barplot-enroll-gender.png" width="480px">
    <br>
    
-   **Ethinicity Distribution of Graduation Rate**
    <img src="../images/EDA/barplot-grad-ethnicity.png" width="480px">
    <br>
    
