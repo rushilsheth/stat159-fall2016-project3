@@ -67,16 +67,42 @@ for (col in 27:35) {
   dat[,col] <- as.numeric(dat[,col])
 }
 
+dat_orig <- dat #test purposes
+
+# filtering the necessary columns from dat
+needed_col <- c('INST', names(dat)[c(12:23,25,27:35)], 'cali_region')
+dat <- dat[, needed_col]
+
+cali_names <- c('Northern California', 'Central California', 'Southern California')
+
 socal <- dat[dat$cali_region == 'socal',]
+socal_mean <- apply(socal[,2:23],2,mean, na.rm = TRUE)
+socal_df <- data.frame(socal_mean)
+socal_df <- t(socal_df)
+row.names(socal_df) <- NULL
+dummy <- data.frame('INST' = 'Southern California')
+socal_df <- cbind(dummy, socal_df)
+
 cencal <- dat[dat$cali_region == 'cencal',]
+cencal_mean <- apply(cencal[,2:23],2,mean, na.rm = TRUE)
+cencal_df <- data.frame(cencal_mean)
+cencal_df <- t(cencal_df)
+row.names(cencal_df) <- NULL
+cencal_df[cencal_df == 'NaN'] = 0
+dummy <- data.frame('INST' = 'Central California')
+cencal_df <- cbind(dummy, cencal_df)
+
 norcal <- dat[dat$cali_region == 'norcal',]
+norcal_mean <- apply(norcal[,2:23],2,mean, na.rm = TRUE)
+norcal_df <- data.frame(norcal_mean)
+norcal_df <- t(norcal_df)
+row.names(norcal_df) <- NULL
+dummy <- data.frame('INST' = 'Northern California')
+norcal_df <- cbind(dummy, norcal_df)
 
-# Still need to do regions comparison
-# Also need to do class age and average income
-  
-
-
-
+dat[,'cali_region'] <- NULL
+dat <- rbind(dat, socal_df, cencal_df, norcal_df)
+dat$Med_Fam_Inc <- dat$Med_Fam_Inc/1000
 
 # SHINY APP
 ui <- shinyUI(fluidPage(
@@ -85,15 +111,19 @@ ui <- shinyUI(fluidPage(
     sidebarPanel(
       selectInput("groupa",
                   label = "Group A",
-                  c(dat$INST)
+                  dat$INST,
+                  selected = dat$INST[32]
       ),
       selectInput("groupb",
                   label = "Group B",
-                  c(dat$INST)
+                  dat$INST,
+                  selected = dat$INST[34]
       ),
       radioButtons('class',
                    label = 'Class Type',
-                   c('Gender', 'Ethnicity', 'Graduation Rate (Not Applicable for Pie Charts)')
+                   c('Gender', 'Ethnicity',
+                     'Age and Income (Not Applicable for Pie Charts)',
+                     'Graduation Rate (Not Applicable for Pie Charts)')
       ),
       radioButtons('chart',
                    label = 'Chart Type',
@@ -115,11 +145,14 @@ server <- function(input, output) {
       name <- c('Enroll_Men', 'Enroll_Women')
       class_name <- 'Gender'
     } else if (input$class == 'Ethnicity') {
-      name <- names(dat)[12:20]
+      name <- names(dat)[2:10]
       class_name <- 'Ethnicity'
-    } else {
-      name <- names(dat)[27:35]
+    } else if (input$class == 'Graduation Rate (Not Applicable for Pie Charts)') {
+      name <- names(dat)[15:23]
       class_name <- 'Graduation Rate'
+    } else if (input$class == 'Age and Income (Not Applicable for Pie Charts)') {
+      name <- names(dat)[c(13,14)]
+      class_name <- 'Age and Income (Not Applicable for Pie Charts)'
     }
     for (index in 1:length(selections)) {
       if (input$groupa == selections[index]) {
@@ -131,17 +164,26 @@ server <- function(input, output) {
             coord_polar(theta = 'y', start = 0) +
             xlab('') + 
             ylab('') + 
-            ggtitle(paste0(input$class,' Percentages in ', selections[index]))
+            ggtitle(paste0(class_name,' Percentages in ', selections[index]))
         } else if (input$chart == 'Bar') {
           slices <- dat[which(dat$INST == selections[index]),name]
-          bar_data <- data.frame('Group' = factor(names(slices)), 
-                                   'Percentages' = as.numeric(slices)
-          )
-          plot1 <- ggplot(data = bar_data, aes(x = Group, y = Percentages, fill = Group)) +
-            geom_bar(stat="identity")
+          if (input$class == 'Age and Income (Not Applicable for Pie Charts)') {
+            bar_data <- data.frame('Group' = factor(names(slices)), 
+                                   'Quantity' = as.numeric(slices))
+            plot1 <- ggplot(data = bar_data, aes(x = Group, y = Quantity, fill = Group)) +
+              geom_bar(stat="identity") +
+              ggtitle(paste0('Age and Income Quantities in ', selections[index], ' (Income in thousands)'))
+          } else {
+            bar_data <- data.frame('Group' = factor(names(slices)),
+                                   'Percentages' = as.numeric(slices))
+            plot1 <- ggplot(data = bar_data, aes(x = Group, y = Percentages, fill = Group)) +
+              geom_bar(stat="identity") +
+              ggtitle(paste0(class_name,' Percentages in ', selections[index]))
+          }
         }
-        }
+      }
     }
+    
     for (index2 in 1:length(selections)) {
       if (input$groupb == selections[index2]) {
         if (input$chart == 'Pie') {
@@ -156,16 +198,26 @@ server <- function(input, output) {
             ylab('') + 
             ggtitle(paste0(class_name,' Percentages in ', selections[index2]))
         } else if (input$chart == 'Bar') {
-          slices <- dat[which(dat$INST == selections[index2]),name]
-          bar_data <- data.frame('Group' = factor(names(slices)), 
-                                 'Percentages' = as.numeric(slices)
-          )
-          plot2 <- ggplot(data = bar_data, aes(x = Group, y = Percentages, fill = Group)) +
-              geom_bar(stat="identity")
+            slices <- dat[which(dat$INST == selections[index2]),name]
+            if (input$class == 'Age and Income (Not Applicable for Pie Charts)') {
+              bar_data <- data.frame('Group' = factor(names(slices)), 
+                                     'Quantity' = as.numeric(slices))
+              plot2 <- ggplot(data = bar_data, aes(x = Group, y = Quantity, fill = Group)) +
+                geom_bar(stat="identity") + 
+                ggtitle(paste0('Age and Income Quantities in ', selections[index2], ' (Income in thousands)'))
+            } else {
+              bar_data <- data.frame('Group' = factor(names(slices)), 
+                                     'Percentages' = as.numeric(slices))
+              plot2 <- ggplot(data = bar_data, aes(x = Group, y = Percentages, fill = Group)) +
+               geom_bar(stat="identity") + 
+               ggtitle(paste0(class_name,' Percentages in ', selections[index2]))
+            }
         }
       }
     }
     if (class_name == 'Graduation Rate' & input$chart == 'Pie') {
+      plot.new()
+    } else if (class_name == 'Age and Income (Not Applicable for Pie Charts)' & input$chart == 'Pie') {
       plot.new()
     } else {
       if (input$chart == 'Pie') {
@@ -177,4 +229,6 @@ server <- function(input, output) {
   })
 }
 
+
 shinyApp(ui = ui, server = server) 
+
