@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Introduction  
 Goals: 
 
-1. Determine succesful 4-year art schools in California
+1. Determine succesful 4-year art schools in California in terms of diversity and graduation rate
 
 2. Develop a Shiny Web App to observe the Difference between Two art schools
 
@@ -37,6 +37,7 @@ Actually this data set contained way to many variables
 	- Age
 	- Graduation Rate
 	- Gender
+	- Average Family Income 
 
 ## Method - Models  
 The following models were considered to help our client: 
@@ -69,3 +70,12 @@ library(xtable)
 	- Graduation Rate
 3. Decide the chart type 
 4. Output: 2 charts(of the specified type) for each school using the choosen variable
+
+
+# Conclusion
+  EDA Analysis: common enrolled age: 22 or 28; even split between female and male students;  Hispanic and Asian have
+  the highest graduation rate while Black student has the lowest
+  
+  Regression Model: Positive and Negative linera relationship both present between selected variables vs graduation rate
+
+# Thank you and Questions? 
