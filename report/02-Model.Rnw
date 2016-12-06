@@ -1,5 +1,5 @@
 \section{Methods}
-We built various linear models from the \textit{client-data.csv} data set. We predicted the variable `Grad\_Rate` in terms of eight predictors: proportion of White students enrolled, proportion of Black students enrolled, proportion of Hispanic students enrolled, proportion of Asian students enrolled, proprotion of Women enrolled, Average age of enrolled students, Average Family Income and Total Enrollment. 
+We built various linear models from the \textit{client-data.csv} data set. We predicted the variable `Grad_Rate` in terms of eight predictors: proportion of White students enrolled, proportion of Black students enrolled, proportion of Hispanic students enrolled, proportion of Asian students enrolled, proprotion of Women enrolled, Average age of enrolled students, Average Family Income and Total Enrollment. 
 
 We created 5 different scripts for running various regression methods: Ordinary Least Squares, Ridge regression, Lasso Regression, Principal Components Regression, and Partial Least Squares Regression.
 
@@ -215,5 +215,14 @@ ggplot(coef_tidy, aes(type,value))+
 
 @
 
-From the table of regression coefficients
+From the p-value and the adjusted R-squared value, the null hypothesis can be rejected and so there exists a linear relationship between the diversity variables and the graduate rate for these art schools. Although, the adjusted R-squared value is relatively low, given that the sample size was limited and the variables used don't directly have an impact on a surface level, this model can be accepted. 
+
+Looking at all the regressions performed and their respective coefficients:
+
+- Enrollment of Black and Asian students and the Average Family Income of the students all have a positive correlation with the graduation rate 
+- Enrollment of White and Hispanic students, Enrollment of Women, Average Age of Entry and Total Enrollment for the school all have a negative correlation with the graduation rate
+
+The largest positive correlation is attributed to the Enrollment of Black students and the largest negative correlation is attributed to the Enrollment of White students. 
+
+\end{document}
 
