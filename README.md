@@ -28,6 +28,7 @@ stat159_final_proj/
 	README.md
 	Makefile	
 	LICENSE
+	session-info.R
 	session-info.txt
         session-info.sh
 	.gitignore
@@ -75,7 +76,9 @@ report/
     README.md
     report.pdf
     report.Rnw
-
+    01-intro.Rnw
+    02-Model.Rnw
+    03-shinyapp.Rnw
 
 slides/
     README.md
@@ -108,6 +111,7 @@ Slides: This directory contains the presentation slide
 <br>
 ##Makefile Commands
  The Makefile in this directory contains a number of phony targets which run different pieces of the data acquisition, cleaning, model fitting, analysis, app building and report. To run certain targets, simply type "make target_name" into the terminal. Here is a list of the phony target titles:
+ 
 • all: runs the main aspects of our project: Exploratory data analysis, Model creation, and Report compiling/rendering  
 • data: downloads the file Credit.csv to the folder data/    
 • eda: performs the exploratory data analysis  
