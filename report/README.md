@@ -10,4 +10,5 @@
  01-intro.Rnw
  02-Model.Rnw
  03-shinyapp.Rnw
+ 04-conclusion.Rnw
  ```
