@@ -2,7 +2,7 @@
 # variable for url
 url = https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv
 
-.PHONY: data eda regressions report shiny clean all 
+.PHONY: data eda regressions report shiny clean all slides
 
 all: eda data report slides session-info 
 
@@ -44,11 +44,9 @@ report/report.pdf: report/01-intro.Rnw report/02-Model.Rnw report/03-shinyapp.Rn
 	pdflatex report.tex
 	#Rscript -e "library(knitr); knit2pdf('report/report.Rnw', output = 'report/report.pdf')"
 
-slides: slides/presentation.html
-
 # This target will generate the presentation in html output. 
-slides/presentation.html: 
-	Rscript -e "library(rmarkdown); render('slides/presentation.Rmd')"
+slides: 
+	Rscript -e 'library(rmarkdown); render("slides/presentation.Rmd")'
 	
 shiny:
 	Rscript shiny/app.R
