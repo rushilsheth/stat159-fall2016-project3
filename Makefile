@@ -49,7 +49,7 @@ slides/presentation.html:
 	Rscript -e "library(rmarkdown); render('slides/presentation.Rmd')"
 	
 shiny:
-	R -e "shiny::runApp('shiny/app.R')"
+	Rscript shiny/app.R
 
 clean: 
 	rm -f report/report.pdf
