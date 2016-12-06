@@ -1,15 +1,7 @@
-This is my shiny app. 
+This directory contains the shiny app.
 
-There are several different shiny apps contained in this folder.
-
-1. 
-
-
-If you want an interactive view of the different regression models you can run make shiny
-
-a. A command similar to Listening on http://127.0.0.1:6800 should show up.
-
-b. Copy the URL into a browser.
-
-c. After you are done using the Slidy App type "ctrl +c" on terminal to exit R
-
+- To run this app, type of the following command onto your terminal: make shiny
+- The result should give you an http link that will lead you to the interactive shiny app
+- A command similar to "Listening on http://127.0.0.1:4757" should show up.
+- Copy the URL into your browser.
+- To exit the shiny app, type in Ctrl + Z in the terminal.

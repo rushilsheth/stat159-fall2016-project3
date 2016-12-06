@@ -3,7 +3,7 @@ library(ggplot2)
 library(gridExtra)
 
 # read in client data
-dat<-read.csv("../data/client-data.csv", stringsAsFactors = FALSE)
+dat<-read.csv("data/client-data.csv", stringsAsFactors = FALSE)
 dat[dat == 'NULL'] <- NA
 
 # cities to counties
@@ -106,7 +106,7 @@ dat$Med_Fam_Inc <- dat$Med_Fam_Inc/1000
 
 # SHINY APP
 ui <- shinyUI(fluidPage(
-  titlePanel("Pie Charts of Selected Groups"),
+  titlePanel("Comparing Class Types Amongst California Art Schools"),
   sidebarLayout(
     sidebarPanel(
       selectInput("groupa",
