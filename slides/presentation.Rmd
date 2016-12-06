@@ -51,6 +51,21 @@ The following models were considered to help our client:
 # Analysis  
 
 ## Summary 
+
+### EDA Analysis
+   **Average Age of Enrolled Student**
+   <img src="../images/EDA/histogram-age.png " width="750px">
+   <br>
+   
+   **Gender of Enrolled Student**
+   <img src="../images/EDA/barplot-enroll-gender.png" width="750px">
+   <br>
+   
+   **Ethinicity Distribution of Graduation Rate**
+   <img src="../images/EDA/barplot-grad-ethnicity.png" width="750px">
+   <br>
+   
+### Model 
 ```{r, results = "asis", echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center"}
 load('../data/OLS.Rdata')
 load('../data/PCR.Rdata')
