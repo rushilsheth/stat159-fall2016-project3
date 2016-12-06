@@ -38,8 +38,8 @@ session-info:
 	bash session-info.sh 
 	Rscript code/scripts/session-info.R
 
-report/report.pdf: report/01-intro.Rnw report/02-Model.Rnw report/03-shinyapp.Rnw
-	cat report/01-intro.Rnw report/02-Model.Rnw report/03-shinyapp.Rnw > report/report.Rnw 
+report/report.pdf:
+	cat report/01-intro.Rnw report/02-model.Rnw report/03-shinyapp.Rnw report/conclusions.Rnw > report/report.Rnw 
 	Rscript -e "library(knitr); knit('report/report.Rnw')"
 	pdflatex report.tex
 	cp report.pdf report/report.pdf
