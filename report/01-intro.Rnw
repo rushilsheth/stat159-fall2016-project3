@@ -15,28 +15,29 @@
 
 \section{Abstract}
 This project consists of performing a virtual consulting analysis from College ScoreCard data. Specifically, our team members analyzed and interpreted the data by EDA analysis, regression model building and interactive shiny app to help a group of art institution administrators to compare themselves with similar schools in California, in terms of diversity of graduation rates.
-\end{abstract}
 
 \section{Introduction}
-\paragraph{Data Analysis has been extensively used in different areas to explore, understand and predict our daily life. The motivation behind this project is to provide insights for higher education officials/policymakers to better assess how well institutions are providing access to diverse group of students.  Our team decides to help a group of 4-year art institution administrators to compare themselves to similar schools in California, in terms of diversity and graduation rates.}
+Data Analysis has been extensively used in different areas to explore, understand and predict our daily life. The motivation behind this project is to provide insights for higher education officials/policymakers to better assess how well institutions are providing access to diverse group of students.  Our team decides to help a group of 4-year art institution administrators to compare themselves to similar schools in California, in terms of diversity and graduation rates.
 
-\paragraph{The overall workflow can be summarized as followed: data cleaning (target schools that are 4-year art institutions located in California)--> EDA Analysis( provide overall pictures of schools enrollment and graduation statistics)-->Model Building()--> Shiny App (interactive tool for user to visualize data with selected school and other criteria)-->Presentation slides( share results with public). Each section of the workflow will be explored and explained in details. }
+The overall workflow can be summarized as followed: data cleaning (target schools that are 4-year art institutions located in California)--> EDA Analysis( provide overall pictures of schools enrollment and graduation statistics)-->Model Building()--> Shiny App (interactive tool for user to visualize data with selected school and other criteria)-->Presentation slides( share results with public). Each section of the workflow will be explored and explained in details.
 
 
 \section{Data Cleaning}
 
-\paragraph{The raw data used in this project comes from College ScoreCard, downloaded \href{https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv}{here}, developed by the U.S Department of Education. To select targeted school, we choose specifically four-year art schools in CA (these are indicated by the abbreviation "CCBASIC==30" and "STABBR=="CA" respectively in the raw data). We also extracted schools' location, zip code, website etc in similar way.}
+The raw data used in this project comes from College ScoreCard, downloaded \href{https://ed-public-download.apps.cloud.gov/downloads/Most-Recent-Cohorts-All-Data-Elements.csv}{here}, developed by the U.S Department of Education. To select targeted school, we choose specifically four-year art schools in CA (these are indicated by the abbreviation "CCBASIC==30" and "STABBR=="CA" respectively in the raw data). We also extracted schools' location, zip code, website etc in similar way.
 
-\paragraph{ There are several indicators for diversity, which we identified as gender, average family income, average age and ethnicity. For the dependent variables, we choose enrollment and graduation rates. We further divide enrollment based on ethnicity (enroll-white is percentage of enrolled people that are white etc), gender(enroll-men etc), graduation based on ethnicity(grad-rate-asian etc). Note that the raw data doesn't provide graduation based on gender. We also catalog schools based on their region (1 indicates North Cal, 2 Central Cal and 3 for South Cal).} 
- \paragraph{Based on the criteria, 31 schools in total are selected and the finalized data is presented in "client-dat.csv".}
+There are several indicators for diversity, which we identified as gender, average family income, average age and ethnicity. For the dependent variables, we choose enrollment and graduation rates. We further divide enrollment based on ethnicity (enroll-white is percentage of enrolled people that are white etc), gender(enroll-men etc), graduation based on ethnicity(grad-rate-asian etc). Note that the raw data doesn't provide graduation based on gender. We also catalog schools based on their region (1 indicates North Cal, 2 Central Cal and 3 for South Cal).
+
+Based on the criteria, 31 schools in total are selected and the finalized data is presented in "client-dat.csv".
 
 
 \section{EDA Analysis}
- \paragraph{ As the first step of data analysis, EDA tries to provide a general picture of average school performance. A picture is worth a thousand words, so let's take a look at what information the data discloses.}
+ 
+ As the first step of data analysis, EDA tries to provide a general picture of average school performance. A picture is worth a thousand words, so let's take a look at what information the data discloses.
   
  \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/histogram-age.png}
+\includegraphics[width=0.5\textwidth]{../images/histogram-age.png}
 \caption{Average Age of Enrolled Students} 
  \raggedright
  
@@ -46,7 +47,7 @@ This project consists of performing a virtual consulting analysis from College S
  
  \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/histogram-income.png}
+\includegraphics[width=0.5\textwidth]{../images/histogram-income.png}
 \caption{Average Family Income of Enrolled Students}
 
  \raggedright
@@ -55,7 +56,7 @@ Figure 2 shows enrollment rate vs average family income. Again we can see relati
  
  \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/barplot-enroll-gender.png}
+\includegraphics[width=0.5\textwidth]{../images/barplot-enroll-gender.png}
 \caption{Gender Distribution of Enrolled Students}
 
   
@@ -65,7 +66,7 @@ Figure 2 shows enrollment rate vs average family income. Again we can see relati
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{images/barplot-enroll-ethnicity.png}
+\includegraphics[width=0.5\textwidth]{../images/barplot-enroll-ethnicity.png}
 \caption{Ethnicity Distribution of Enrolled Students}
 
 
@@ -75,7 +76,7 @@ Figure 4 shows enrollment ethnicity breakdown. The bar-plot indicates White and 
  
  \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{barplot-grad-ethnicity.png}
+\includegraphics[width=0.5\textwidth]{../images/barplot-grad-ethnicity.png}
 \caption{Ethnicity Distribution of Graduated Students}
  
  
